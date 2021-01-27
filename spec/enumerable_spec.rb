@@ -22,6 +22,13 @@ describe Enumerable do
       i+=1
       end
     end
+
+    it 'Returns to Enumerator if no block is given' do
+      expect(array.my_each.is_a?(Enumerator)).to be true
+    end
+    it 'Returns to Enumerator if no block is given' do
+      expect(hash.my_each.is_a?(Enumerator)).to be true
+    end
   end
 
   describe '#my_each_with_index' do
@@ -32,5 +39,22 @@ describe Enumerable do
       i+=1
       end  
     end  
+
+    it 'Returns to Enumerator if no block is given' do
+      expect(array.my_each_with_index.is_a?(Enumerator)).to be true
+    end
+  end
+  describe '#my_select' do
+    it 'selects odd numbers from the array' do
+      expect(array.my_select(&:odd?)).to eq([5,11, 31])
+    end
+
+    it 'Returns to Enumerator if no block is given' do
+      expect(array.my_select.is_a?(Enumerator)).to be true
+    end
+
+    it 'select a key value pair from the hash' do
+      expect(hash.select { |key, value| value == 'bark' }).to eq({'dog' => 'bark'})
+    end
   end
 end
