@@ -70,7 +70,7 @@ module Enumerable
 
   def my_any?
     h_array = to_a
-    h_array.my_each do
+    h_array.my_each do |v|
       return true unless yield(v) == false
     end
     false
@@ -172,7 +172,7 @@ def multiply_els(array)
   array.my_inject(:*)
 end
 answer = multiply_els([2, 4, 5])
-puts answer
+# puts answer
 # c = [21, 506, 61, 142, 81, 11, 133, 4, 41, 61, 11]
 # proc = proc { |num, number| puts "Thank you #{num + number}" }
 # arr2 = c.map(&proc) {|num| puts "changed #{num}"}
@@ -238,6 +238,8 @@ puts answer
 # puts "inject f : #{e.my_inject { |sum, number| sum * number }}\n\n"
 # puts "inject g : #{d.inject}\n\n"
 # puts "inject g : #{d.my_inject(11)}\n\n"
+# ar = [1, 2, 3, 4]
+# puts "{#{ar.my_any?{|v| v > 100}}"
 # rubocop:enable Metrics/ModuleLength
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
