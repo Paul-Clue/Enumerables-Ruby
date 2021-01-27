@@ -154,7 +154,7 @@ module Enumerable
     return sum unless block_given?
 
     sum = num
-    sum = h_range[0] unless num.positive?
+    sum = h_range[0] unless num.positive? || num.zero?
     index = 0
     h_range.my_each do
       sum = block.yield(sum, h_range[index]) unless num.positive?
@@ -171,7 +171,7 @@ end
 def multiply_els(array)
   array.my_inject(:*)
 end
-answer = multiply_els([2, 4, 5])
+multiply_els([2, 4, 5])
 # puts answer
 # c = [21, 506, 61, 142, 81, 11, 133, 4, 41, 61, 11]
 # proc = proc { |num, number| puts "Thank you #{num + number}" }
