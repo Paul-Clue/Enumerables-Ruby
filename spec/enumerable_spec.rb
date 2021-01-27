@@ -1,4 +1,6 @@
-require_relative '../lib/enumerables.rb'
+#spec/enumerable_spec.rb
+
+require_relative '../enumerables.rb'
 
 describe Enumerable do
   let(:array) {[2, 5, 6, 11, 70, 4, 22, 68, 31]}
@@ -20,7 +22,15 @@ describe Enumerable do
       i+=1
       end
     end
-    
-    
+  end
+
+  describe '#my_each_with_index' do
+    it 'iterates through each value and index in an array' do
+      i=0
+      array.my_each_with_index do |value, index|
+        expect(index).to eq(i)
+      i+=1
+      end  
+    end  
   end
 end
