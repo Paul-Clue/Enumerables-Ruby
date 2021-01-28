@@ -126,21 +126,24 @@ module Enumerable
     map_arr
   end
 
-  def my_inject(num = 0, &block)
-    return 'no block given (LocalJumpError)' unless block_given? || num != 0
+  def my_inject(num = nil, num2 = 0, &block)
+    raise LocalJumpError unless block_given? || !num.nil?
 
+    temp = num
+    num = 0 unless temp != 0
     sum = 0
+    sum = num unless ((num == :+) == true || (num == :*) == true) && !num.instance_of?(Numeric)
     h_range = to_a
     h_range.my_each do |v|
       sum += v
     end
-    return sum unless (num == :+) == false
+    return sum unless (num2 == :+) == false && (num == :+) == false
 
     sum = 1
     h_range.my_each do |v|
       sum *= v
     end
-    return sum unless (num == :*) == false
+    return sum unless (num2 == :*) == false && (num == :*) == false
 
     sum = 0
     h_range.my_each do |v|
@@ -172,7 +175,6 @@ end
 def multiply_els(array)
   array.my_inject(:*)
 end
-multiply_els([2, 4, 5])
 
 # rubocop:enable Metrics/ModuleLength
 # rubocop:enable Metrics/CyclomaticComplexity

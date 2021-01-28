@@ -119,11 +119,11 @@ describe Enumerable do
     end
 
     it 'returns the sum of the elements in an array' do
-      expect(array.my_inject(:+)).to eq(219)
+      expect(array.my_inject(:+)).to eq(array.inject(:+))
     end
 
     it 'returns the proper sum that includes the argument' do
-      expect { array.my_inject(3, :+) }.to raise_exception
+      expect(array.my_inject(3, :+)).to eq(array.inject(3, :+))
     end
   end
 end
