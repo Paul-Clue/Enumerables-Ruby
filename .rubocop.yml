@@ -3,19 +3,25 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
 
+GlobalVars:
+  Enabled:
+    - $redis
+
+
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 250
 Metrics/MethodLength:
-  Max: 50
+  Max: 80
 Metrics/AbcSize:
-  Max: 100
+  Max: 110
 Metrics/ClassLength:
   Max: 250
 Metrics/BlockLength:
-  ExcludedMethods: ["describe"]
-  Max: 100
+  ExcludedMethods: ['describe']
+  Max: 70
+
 
 Style/Documentation:
   Enabled: false
