@@ -77,6 +77,10 @@ describe Enumerable do
     it 'returns true if any value returned by block is true' do
       expect(array.my_any? { |v| v == 5 }).to eq(true)
     end
+
+    it 'check for false element' do
+      expect(array.my_any? { |v| v == false }).to eq(false)
+    end
   end
 
   describe '#my_none' do
@@ -112,6 +116,14 @@ describe Enumerable do
 
     it 'returns the product of the numbers in an array' do
       expect(array.my_inject(1) { |product, n| product * n }).to eq(8_570_284_800)
+    end
+
+    it 'returns the sum of the elements in an array' do
+      expect(array.my_inject(:+)).to eq(219)
+    end
+
+    it 'returns the proper sum that includes the argument' do
+      expect { array.my_inject(3, :+) }.to raise_exception
     end
   end
 end
